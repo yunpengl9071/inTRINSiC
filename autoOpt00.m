@@ -4,7 +4,7 @@ st = size(t); sm = size(m);
 %% Start with the default options
 options = optimoptions('fmincon');
 %% Modify options setting
-options = optimoptions('fmincon','GradObj','off');
+options = optimoptions('fmincon','GradObj','on');
 options = optimoptions(options,'Display', 'off');
 options = optimoptions(options,'Algorithm', 'interior-point');
 options = optimoptions(options,'MaxFunEvals', 1000000);

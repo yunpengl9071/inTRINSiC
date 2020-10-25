@@ -4,7 +4,7 @@ import random
 #import numpy
 import math
 
-wkdir = '/Users/yunpengl/Data/multilayerNetwork/data/regrOutput/'
+wkdir = '/ahg/regevdata/projects/txnRegModeling/regression'
 
 subtype = sys.argv[1]
 l = sys.argv[2]
@@ -12,8 +12,7 @@ rmd = sys.argv[3]
 
 if int(rmd) > 0:
     idx = sys.argv[4]
-else:
-    idx = 0
+
 # subtype = 'Mesenchymal'
 
 
@@ -47,9 +46,9 @@ TF_to_gene = {}
 tol = 1e-3
 
 for gene in TGList:
-    if int(idx) == 1:
+    if int(rmd) == 1:
         gpath = wkdir + "/" + subtype + "/CV_" + idx + "/genes/" + gene
-    elif int(idx) == 2:
+    elif int(rmd) == 2:
         gpath = wkdir + "/" + subtype + "/randShfl_" + idx + "/genes/" + gene
     else:
         gpath = wkdir + "/" + subtype + "/genes/" + gene
@@ -90,18 +89,18 @@ for gene in TGList:
                 TF_to_gene[currtf][gene] = -1
 
 # Output edges with non-(-1) weights
-if int(idx) == 1:
+if int(rmd) == 1:
     allpath = wkdir + "/" + subtype + "/CV_" + idx + "/" + subtype + "_all_ri_nomi_" + str(l) + ".txt"
-elif int(idx) == 2:
+elif int(rmd) == 2:
     allpath = wkdir + "/" + subtype + "/randShfl_" + idx + "/" + subtype + "_all_ri_nomi_" + str(l) + ".txt"
 else:
     allpath = wkdir + "/" + subtype + "/" + subtype + "_all_ri_nomi_" + str(l) + ".txt"
 
 f_all = open(allpath,'w')
 
-if int(idx) == 1:
+if int(rmd) == 1:
     tgopath = wkdir + "/" + subtype + "/CV_" + idx + "/" + subtype + "_TF_gene_ri_nomi_" + str(l) + ".txt"
-elif int(idx) == 2:
+elif int(rmd) == 2:
     tgopath = wkdir + "/" + subtype + "/randShfl_" + idx + "/" + subtype + "_TF_gene_ri_nomi_" + str(l) + ".txt"
 else:
     tgopath = wkdir + "/" + subtype + "/" + subtype + "_TF_gene_ri_nomi_" + str(l) + ".txt"
